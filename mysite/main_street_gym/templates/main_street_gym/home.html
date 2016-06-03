@@ -1,0 +1,25 @@
+{% extends 'main_street_gym/ok.html'%}
+
+{% block content %}
+<h1>Hello,Gua Wa Zi!</h1>
+<form action="http://jobs.monster.com/search/" method="get"; margin:30px;>
+  <input name="q" type="text"/>
+  <br/>
+  <input type="submit" value="find the prefect a job"/>
+
+</form>
+<p>
+</p>
+<img alt="let's do this" src="./FengXiao.jpg" width = '19%'/>
+<style>
+  #bot{
+  font-size:smaller;
+  font-weight:bold;margin:20px;text-align:right
+  }
+</style>
+<div id="bot" >
+  Copy right &#169; Second Brother
+</div>
+
+{% include "personal/includes/htmlsnippet.html" %}
+{% endblock %}

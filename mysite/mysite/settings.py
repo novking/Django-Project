@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'personal',
+    'main_street_gym',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

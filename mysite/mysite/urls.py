@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', include ('personal.urls')),
+    url(r'^msg', include ('main_street_gym.urls')),
 ]
