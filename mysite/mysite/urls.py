@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^', include ('personal.urls')),
     url(r'^msg/', include ('main_street_gym.urls')),
     url(r'^blog/', include ('blog.urls')),
+    url(r'^github_finder/', include('github_finder.urls'))
 ]

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+  <script type="text/javascript" src="/static/personal/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/personal/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  charset="utf-8">
+  <link rel="stylesheet" href="/static/personal/css/bootstrap-theme.min.css"  charset="utf-8">
+  <style>
+  .form-signin {
+    max-width: 550px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+</style>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+  <h1 class="text-center"> Github User Data </h1>
+  <div class="container text-center">
+    <form class="form-signin" id="login_form" method="post" action="/github_finder/github_profile/">
+      {% csrf_token %}
+
+      <br>
+      <input type="text" name="user" class="form-control" placeholder="Github User Name, e.g: DrkSephy" value="" required autofocus>
+      <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Get Data</button>
+    </form>
+</div>
+  <div class="container text-center">
+	<div class="col-lg-12">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped tablesorter">
+            <thead>
+              <tr class="active">
+                  <th class="header"> Username <i class="fa fa-heart"></i></th>
+                  <th class="header"> Blog <i class="fa fa-file"></i></th>
+                  <th class="header"> Public Repos <i class="fa fa-code-fork"></i></th>
+                  <th class="header"> Public Gists <i class="fa fa-git"></i></th>
+                  <th class="header"> Email <i class="fa fa-envelope"></i></th>
+                  <th class="header"> Followers <i class="fa fa-comment"></i></th>
+                  <th class="header"> Following <i class="fa fa-cogs"></i></th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for key in data %}
+                  <tr>
+                      <td>{{ key.name }}</td>
+                      <td>{{ key.blog }}</td>
+                      <td>{{ key.public_repos }}</td>
+                      <td>{{ key.public_gists }}</td>
+                      <td>{{ key.email }}</td>
+                      <td>{{ key.followers }}</td>
+                      <td>{{ key.following }}</td>
+                  </tr>
+              {% endfor %}
+
+            </tbody>
+            </table>
+
+            <div class="text-center">
+              {% for i in picture %}
+              <p>
+                {{i.}}
+              </p>
+                {% for j in i %}
+                <img style=" float:left; display:inline"align="middle" hspace="20" src="{{ j }}" class="img-responsive" >
+                {% endfor %}
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
