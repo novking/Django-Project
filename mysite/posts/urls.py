@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-
+from . import views
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include ('personal.urls')),
-    url(r'^msg/', include ('main_street_gym.urls')),
-    url(r'^blog/', include ('blog.urls')),
-    url(r'^github_finder/', include('github_finder.urls')),
-    url(r'^posts/', include('posts.urls')),
+    url(r'^$', views.post_list, name = "post_list"),
+    url(r'^create/$', views.post_create, name="post_create"),
+    url(r'^detail/$', views.post_detail, name="post_detail"),
+    url(r'^updated/$', views.post_updated, name = "post_updated"),
+
+    url(r'^delete/$', views.post_delete, name = "post_delete"),
 ]
