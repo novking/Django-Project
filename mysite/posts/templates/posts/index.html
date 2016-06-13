@@ -1,0 +1,11 @@
+<!--DOCTYPE-->
+<h2>
+  okokok
+  {{title}}
+</br>
+  {% for item in object_list %}
+    <a href = "{% url 'posts:detail' pk=item.id %}"<h2>{{item.pk}}</h2>
+    <a href = "{{ item.get_absolute_url }}"><h2>{{item.title}}</h2></a>
+    <p>{{item.content}}</p>
+  {% endfor %}
+</h2>

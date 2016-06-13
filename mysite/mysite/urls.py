@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^msg/', include ('main_street_gym.urls')),
     url(r'^blog/', include ('blog.urls')),
     url(r'^github_finder/', include('github_finder.urls')),
-    url(r'^posts/', include('posts.urls')),
+    url(r'^posts/', include('posts.urls', namespace = "posts")),
 ]
