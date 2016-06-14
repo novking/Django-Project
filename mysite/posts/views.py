@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from . import models
+from .forms import PostForm
 
 def post_list(request):
     object_list = models.Post.objects.all()
@@ -14,12 +15,18 @@ def post_list(request):
          "title":"List"
         }
     return render(request, "posts/index.html", context)
+
 def post_create(request):
-    instance = get_object_or_404(models.Post, id=100)
+    form = PostForm(request.POST or None)
+    if form.is_valid():
+        # instant = form.save(commit= False)
+        # instant.save()
+        instance = form.save()
+        return HttpResponseRedirect(instance.get_absolute_url())
     context = {
-     "title":"Detail"
+        "form": form
     }
-    return render(request, "index.html", context)
+    return render(request, "posts/posts_form.html", context)
 
 def post_detail(request, pk=None):
     instance = get_object_or_404(models.Post, id=pk)
@@ -27,8 +34,20 @@ def post_detail(request, pk=None):
 
 
 
-def post_updated(request):
-    return HttpResponse("<h1>updated</h1>")
+
+def post_updated(request, pk=None):
+    instance = get_object_or_404(models.Post, id=pk)
+    form = PostForm(request.POST or None, instance = instance)
+    if form.is_valid():
+        instant = form.save()
+        return HttpResponseRedirect(instance.get_absolute_url())
+    context = {
+        "title": instance.title,
+        "instance": instance,
+        "form": form,
+    }
+    return render(request, "posts/posts_form.html", context)
+
 
 def post_delete(request):
     return HttpResponse("<h1>delete</h1>")
