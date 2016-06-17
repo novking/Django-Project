@@ -1,0 +1,20 @@
+<!--DOCTYPE-->
+<html>
+<body>
+  <div class="container">
+    {% block content %}
+    <h1>{{ title }} is working</h1>
+    {% for obj in object_list %}
+    <a href='{% url "posts:detail" pk=obj.id %}'>>>>{% url "posts:detail" pk=obj.id %}</a></br>
+    <a href='{{ obj.get_absolute_url }}'>{{obj.title}}</a><br/>
+    {{ obj.content }}</br>
+    {{ obj.timestamp }}</br>
+    {{ obj.id }}</br>
+
+    {% endfor %}
+    {% endblock content %}
+
+
+  </div>
+</body>
+</html>
